@@ -11,4 +11,5 @@ import UIKit
 struct MyImages {
     var image: UIImage
     var path: String
+    var imageName: String
 }

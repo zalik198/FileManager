@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Locksmith
 
 class ViewController: UIViewController {
     
@@ -23,8 +24,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(tableView)
+        navigationController?.tabBarController?.tabBar.isHidden = false
         
+        view.addSubview(tableView)
+        self.view.backgroundColor = .white
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         
@@ -76,8 +79,9 @@ class ViewController: UIViewController {
             }
             
             let image = UIImage(contentsOfFile: myPath)
+            let fileName = (myPath as NSString).lastPathComponent
             images.append(MyImages(image: image ?? UIImage(),
-                                   path: myPath))
+                                   path: myPath, imageName: fileName))
         }
     }
     

@@ -17,17 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let tabBarController = UITabBarController()
-        self.window?.rootViewController = tabBarController
         self.window?.overrideUserInterfaceStyle = .light
         
-        let myVewController = ViewController()
-        let myNavigationController = UINavigationController(rootViewController: myVewController)
-
-        myNavigationController.tabBarItem.title = "FileManager"
-
-        myVewController.view.backgroundColor = .white
+        let loginViewController = LoginViewController(state: .signUp)//поменять на signIn для выхода
+        let loginNavigationCOntroller = UINavigationController(rootViewController: loginViewController)
+        loginNavigationCOntroller.tabBarItem.title = "FileManager"
         
-        tabBarController.viewControllers = [myNavigationController]
+        let settingsViewController = SettingsViewController()
+        let settingsNavigationController = UINavigationController(rootViewController: settingsViewController)
+        settingsNavigationController.tabBarItem.title = "Settings"
+                
+        tabBarController.viewControllers = [loginNavigationCOntroller, settingsNavigationController]
         
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
