@@ -14,7 +14,7 @@ enum LoginState {
     case passEdit
 }
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController {
     
     private var loginState: LoginState
     private var newPass: String = ""
@@ -30,7 +30,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.minimumFontSize = 27
         passwordTextField.layer.borderColor = CGColor(gray: 0, alpha: 1)
         passwordTextField.placeholder = "Введите пароль"
-        
         return passwordTextField
     }()
     
@@ -40,6 +39,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         button.frame = CGRect(x:0, y:0, width:250, height:100)
         button.backgroundColor = UIColor.blue
         button.layer.cornerRadius = 5
+        button.isHidden = true//кнопка скрыта и не активна, если пароль меньше 4х символов
+        button.isEnabled = false
         button.addTarget(self, action: #selector(enterButton), for: .touchUpInside)
         
         return button
@@ -58,8 +59,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         passwordTextField.delegate = self
-        
         stateButton()
+        
         view.backgroundColor = .lightGray
         self.view.addSubview(button)
         self.view.addSubview(passwordTextField)
@@ -67,19 +68,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         passwordTextField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         passwordTextField.topAnchor.constraint(equalTo: button.topAnchor, constant: -150).isActive = true
+
     }
-    
+      
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.tabBarController?.tabBar.isHidden = true
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.tabBarController?.tabBar.isHidden = false
-        
     }
+    
     
     @objc func enterButton() {
         switch loginState {
@@ -92,7 +93,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             } else {
                 if passwordTextField.text! == newPass {
                     do {
-                        try Locksmith.saveData(data: ["pass" : passwordTextField.text!], forUserAccount: "user4")//forUserAccount поменять для создания нового usera
+                        try Locksmith.saveData(data: ["pass" : passwordTextField.text!], forUserAccount: "user5")//forUserAccount поменять для создания нового usera
                         newPass = ""
                         self.navigationController?.setViewControllers([ViewController()], animated: true)
                     } catch {
@@ -106,7 +107,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         case .signIn:
-            guard let passwords = Locksmith.loadDataForUserAccount(userAccount: "user4") else { return }
+            guard let passwords = Locksmith.loadDataForUserAccount(userAccount: "user5") else { return }
             //вызов нового usera
             if passwordTextField.text! == passwords["pass"] as? String {
                 self.navigationController?.setViewControllers([ViewController()], animated: true)
@@ -119,26 +120,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
         case .passEdit:
             print("Изменить пароль")
-//            if newPass == "" {
-//                newPass = passwordTextField.text!
-//                passwordTextField.text = ""
-//                button.setTitle("Повторите пароль", for: .normal)
-//            } else {
-//                if passwordTextField.text! == newPass {
-//                    do {
-//                        try Locksmith.updateData(data: ["[pass]" : passwordTextField.text!], forUserAccount: "user2") //поменять для изменения пароля, если создадим новый
-//                        self.navigationController?.setViewControllers([ViewController()], animated: true)
-//                    } catch {
-//                        print("error")
-//                    }
-//                }
-//            }
+            //            if newPass == "" {
+            //                newPass = passwordTextField.text!
+            //                passwordTextField.text = ""
+            //                button.setTitle("Повторите пароль", for: .normal)
+            //            } else {
+            //                if passwordTextField.text! == newPass {
+            //                    do {
+            //                        try Locksmith.updateData(data: ["[pass]" : passwordTextField.text!], forUserAccount: "user2") //поменять для изменения пароля, если создадим новый
+            //                        self.navigationController?.setViewControllers([ViewController()], animated: true)
+            //                    } catch {
+            //                        print("error")
+            //                    }
+            //                }
+            //            }
         }
         
     }
-    
-    
-    
+     
     @objc private func stateButton() {
         switch loginState {
         case .signUp:
@@ -151,8 +150,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
-    
-    
 }
 
+//MARK: - Extension
+
+extension LoginViewController: UITextFieldDelegate {
+    //метод делегата для TF, следит за количеством символов в TF, и кнопка активируется полсе ввода не менее 4х символов
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newString = (passwordTextField.text! as NSString).replacingCharacters(in: range, with: string)
+        button.isHidden = newString.count < 4
+        button.isEnabled = true
+        return true
+    }
+}

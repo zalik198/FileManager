@@ -50,6 +50,7 @@ class ViewController: UIViewController {
             self.present(self.imagePicker, animated: true)
         }
         let actionCamera = UIAlertAction(title: "С камеры", style: .default) { (alert) in
+            guard UIImagePickerController.isSourceTypeAvailable(.camera) else { return }
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true)
         }

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         self.window?.overrideUserInterfaceStyle = .light
         
-        let loginViewController = LoginViewController(state: .signUp)//поменять на signIn для выхода
+        let loginViewController = LoginViewController(state: .signIn)//поменять на signIn для выхода
         let loginNavigationCOntroller = UINavigationController(rootViewController: loginViewController)
         loginNavigationCOntroller.tabBarItem.title = "FileManager"
         
