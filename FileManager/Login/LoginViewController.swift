@@ -93,7 +93,7 @@ class LoginViewController: UIViewController {
             } else {
                 if passwordTextField.text! == newPass {
                     do {
-                        try Locksmith.saveData(data: ["pass" : passwordTextField.text!], forUserAccount: "user5")//forUserAccount поменять для создания нового usera
+                        try Locksmith.saveData(data: ["pass" : passwordTextField.text!], forUserAccount: "user7")//forUserAccount поменять для создания нового usera
                         newPass = ""
                         self.navigationController?.setViewControllers([ViewController()], animated: true)
                     } catch {
@@ -107,7 +107,7 @@ class LoginViewController: UIViewController {
                 }
             }
         case .signIn:
-            guard let passwords = Locksmith.loadDataForUserAccount(userAccount: "user5") else { return }
+            guard let passwords = Locksmith.loadDataForUserAccount(userAccount: "user7") else { return }
             //вызов нового usera
             if passwordTextField.text! == passwords["pass"] as? String {
                 self.navigationController?.setViewControllers([ViewController()], animated: true)
