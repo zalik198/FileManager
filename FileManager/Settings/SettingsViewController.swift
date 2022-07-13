@@ -28,8 +28,6 @@ class SettingsViewController: UIViewController {
         tableView.delegate = self
         tableView.register(SettingsViewCell.self, forCellReuseIdentifier: "settingsCell")
         
-        
-        //navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(tapAddButton))
     }
     
     //MARK: Initial layout
@@ -48,8 +46,6 @@ class SettingsViewController: UIViewController {
             self.navigationController?.present(loginVC, animated: true)
         }
     }
-    
-    
     
 }
 

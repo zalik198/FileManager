@@ -156,9 +156,8 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             removeImagesFromDocuments(images[indexPath.row].path)
-            myLibrary()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.reloadData()
+            self.images.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
 }

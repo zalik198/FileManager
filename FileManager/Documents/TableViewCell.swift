@@ -36,7 +36,7 @@ class TableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-   
+    
     func configMyCell(images: MyImages) {
         self.myImage.image = images.image
         self.myLabel.text = images.imageName
@@ -54,8 +54,6 @@ class TableViewCell: UITableViewCell {
             myLabel.leadingAnchor.constraint(equalTo: myImage.trailingAnchor, constant: 16),
             myLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             myLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
-            
-            
             
         ])
     }

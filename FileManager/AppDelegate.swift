@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settingsViewController = SettingsViewController()
         let settingsNavigationController = UINavigationController(rootViewController: settingsViewController)
         settingsNavigationController.tabBarItem.title = "Settings"
-                
+        
         tabBarController.viewControllers = [loginNavigationCOntroller, settingsNavigationController]
         
         self.window?.rootViewController = tabBarController

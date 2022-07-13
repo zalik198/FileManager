@@ -147,9 +147,7 @@ class LoginViewController: UIViewController {
         case .passEdit:
             button.setTitle("Изменить пароль", for: .normal)
         }
-        
     }
-    
 }
 
 //MARK: - Extension

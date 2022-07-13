@@ -81,17 +81,41 @@
 			children = (
 				6215AB322875E2610067E81A /* AppDelegate.swift */,
 				6215AB342875E2610067E81A /* SceneDelegate.swift */,
-				624B640428777D510006E10A /* Model.swift */,
-				624B6406287B614F0006E10A /* LoginViewController.swift */,
-				6215AB362875E2610067E81A /* ViewController.swift */,
-				6215AB4628761C930067E81A /* TableViewCell.swift */,
-				624B6408287B61C50006E10A /* SettingsViewController.swift */,
-				621A403E287F3BE400F01F4B /* SettingsViewCell.swift */,
+				621A4040287F4A2800F01F4B /* Login */,
+				621A4041287F4A3400F01F4B /* Documents */,
+				621A4042287F4A3D00F01F4B /* Settings */,
 				6215AB3B2875E2670067E81A /* Assets.xcassets */,
 				6215AB3D2875E2670067E81A /* LaunchScreen.storyboard */,
 				6215AB402875E2670067E81A /* Info.plist */,
 			);
 			path = FileManager;
+			sourceTree = "<group>";
+		};
+		621A4040287F4A2800F01F4B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				624B6406287B614F0006E10A /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		621A4041287F4A3400F01F4B /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				6215AB362875E2610067E81A /* ViewController.swift */,
+				624B640428777D510006E10A /* Model.swift */,
+				6215AB4628761C930067E81A /* TableViewCell.swift */,
+			);
+			path = Documents;
+			sourceTree = "<group>";
+		};
+		621A4042287F4A3D00F01F4B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				624B6408287B61C50006E10A /* SettingsViewController.swift */,
+				621A403E287F3BE400F01F4B /* SettingsViewCell.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		BE1270C1E975DF387D86905E /* Pods */ = {
