@@ -13,6 +13,7 @@
 		6215AB3C2875E2670067E81A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6215AB3B2875E2670067E81A /* Assets.xcassets */; };
 		6215AB3F2875E2670067E81A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6215AB3D2875E2670067E81A /* LaunchScreen.storyboard */; };
 		6215AB4728761C930067E81A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6215AB4628761C930067E81A /* TableViewCell.swift */; };
+		621A403F287F3BE400F01F4B /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621A403E287F3BE400F01F4B /* SettingsViewCell.swift */; };
 		624B640528777D510006E10A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624B640428777D510006E10A /* Model.swift */; };
 		624B6407287B614F0006E10A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624B6406287B614F0006E10A /* LoginViewController.swift */; };
 		624B6409287B61C50006E10A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624B6408287B61C50006E10A /* SettingsViewController.swift */; };
@@ -29,6 +30,7 @@
 		6215AB3E2875E2670067E81A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6215AB402875E2670067E81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6215AB4628761C930067E81A /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		621A403E287F3BE400F01F4B /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		624B640428777D510006E10A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		624B6406287B614F0006E10A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		624B6408287B61C50006E10A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -79,11 +81,12 @@
 			children = (
 				6215AB322875E2610067E81A /* AppDelegate.swift */,
 				6215AB342875E2610067E81A /* SceneDelegate.swift */,
-				6215AB4628761C930067E81A /* TableViewCell.swift */,
 				624B640428777D510006E10A /* Model.swift */,
 				624B6406287B614F0006E10A /* LoginViewController.swift */,
 				6215AB362875E2610067E81A /* ViewController.swift */,
+				6215AB4628761C930067E81A /* TableViewCell.swift */,
 				624B6408287B61C50006E10A /* SettingsViewController.swift */,
+				621A403E287F3BE400F01F4B /* SettingsViewCell.swift */,
 				6215AB3B2875E2670067E81A /* Assets.xcassets */,
 				6215AB3D2875E2670067E81A /* LaunchScreen.storyboard */,
 				6215AB402875E2670067E81A /* Info.plist */,
@@ -97,7 +100,6 @@
 				698515024C12ADEC07301465 /* Pods-FileManager.debug.xcconfig */,
 				60D7C2FB492240715148E218 /* Pods-FileManager.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -220,6 +222,7 @@
 				624B6409287B61C50006E10A /* SettingsViewController.swift in Sources */,
 				6215AB372875E2610067E81A /* ViewController.swift in Sources */,
 				6215AB4728761C930067E81A /* TableViewCell.swift in Sources */,
+				621A403F287F3BE400F01F4B /* SettingsViewCell.swift in Sources */,
 				6215AB332875E2610067E81A /* AppDelegate.swift in Sources */,
 				6215AB352875E2610067E81A /* SceneDelegate.swift in Sources */,
 			);

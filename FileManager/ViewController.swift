@@ -40,6 +40,11 @@ class ViewController: UIViewController {
         initialLayout()
         myLibrary()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        myLibrary()
+    }
     
     @objc func tapAddButton() {
         
@@ -83,6 +88,13 @@ class ViewController: UIViewController {
             let fileName = (myPath as NSString).lastPathComponent
             images.append(MyImages(image: image ?? UIImage(),
                                    path: myPath, imageName: fileName))
+            
+            if UserDefaults.standard.bool(forKey: "sorted") {
+                images.sort(by: { $1.imageName > $0.imageName })
+            } else {
+                images.sort(by: { $0.imageName > $1.imageName})
+            }
+            tableView.reloadData()
         }
     }
     
