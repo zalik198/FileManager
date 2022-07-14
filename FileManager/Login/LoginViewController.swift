@@ -8,16 +8,19 @@
 import UIKit
 import Locksmith
 
-enum LoginState {
-    case signUp
-    case signIn
-    case passEdit
-}
+
 
 class LoginViewController: UIViewController {
     
-    private var loginState: LoginState
+    enum LoginState {
+        case signUp
+        case signIn
+        case passEdit
+    }
+    
+    var loginState = LoginState.signUp
     private var newPass: String = ""
+    var isChange = false
     
     lazy var passwordTextField: UITextField = {
         let passwordTextField = UITextField()
@@ -46,14 +49,14 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    init(state: LoginState) {
-        self.loginState = state
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    //    init(state: LoginState) {
+    //        self.loginState = state
+    //        super.init(nibName: nil, bundle: nil)
+    //    }
+    //    
+    //    required init?(coder: NSCoder) {
+    //        fatalError("init(coder:) has not been implemented")
+    //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,9 +71,24 @@ class LoginViewController: UIViewController {
         button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         passwordTextField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         passwordTextField.topAnchor.constraint(equalTo: button.topAnchor, constant: -150).isActive = true
-
+        
     }
-      
+    
+    //MARK: - Если пользователь есть то входит в приложение
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard !isChange else { return }
+        if (Locksmith.loadDataForUserAccount(userAccount: "user12") != nil) {//входит если есть такой user
+            loginState = .signIn
+        } else {
+            loginState = .signUp
+        }
+        isChange = true
+    }
+    
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.tabBarController?.tabBar.isHidden = true
@@ -93,7 +111,7 @@ class LoginViewController: UIViewController {
             } else {
                 if passwordTextField.text! == newPass {
                     do {
-                        try Locksmith.saveData(data: ["pass" : passwordTextField.text!], forUserAccount: "user7")//forUserAccount поменять для создания нового usera
+                        try Locksmith.saveData(data: ["pass" : passwordTextField.text!], forUserAccount: "user12")//forUserAccount поменять для создания нового usera
                         newPass = ""
                         self.navigationController?.setViewControllers([ViewController()], animated: true)
                     } catch {
@@ -107,7 +125,7 @@ class LoginViewController: UIViewController {
                 }
             }
         case .signIn:
-            guard let passwords = Locksmith.loadDataForUserAccount(userAccount: "user7") else { return }
+            guard let passwords = Locksmith.loadDataForUserAccount(userAccount: "user12") else { return }
             //вызов нового usera
             if passwordTextField.text! == passwords["pass"] as? String {
                 self.navigationController?.setViewControllers([ViewController()], animated: true)
@@ -137,7 +155,7 @@ class LoginViewController: UIViewController {
         }
         
     }
-     
+    
     @objc private func stateButton() {
         switch loginState {
         case .signUp:

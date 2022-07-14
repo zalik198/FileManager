@@ -41,7 +41,7 @@ class SettingsViewController: UIViewController {
     
     func tapEditPassword() {
         DispatchQueue.main.async {
-            let loginVC = LoginViewController(state: .passEdit)
+            let loginVC = LoginViewController()
             loginVC.modalPresentationStyle = .automatic
             self.navigationController?.present(loginVC, animated: true)
         }
